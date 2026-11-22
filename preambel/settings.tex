@@ -53,14 +53,14 @@
 \newlength{\myfloatsep}
 %\setlength{\myfloatsep}{\baselineskip} % (default 12pt plus 2pt minus 2pt)
 %\setlength{\myfloatsep}{\baselineskip}
-\setlength{\myfloatsep}{12pt}
+\setlength{\myfloatsep}{12pt plus 2pt minus 2pt}
 
 %%% Vertikaler Abstand zwischen der Top- oder Bottom-Bereich und Text-Bereich
 \newlength{\mytextfloatsep}
 %\setlength{\mytextfloatsep}{\baselineskip} % (default 20pt plus 2pt minus 4pt)
 %\setlength{\mytextfloatsep}{\myfloatsep}
 %\setlength{\mytextfloatsep}{1.5\baselineskip}
-\setlength{\mytextfloatsep}{12pt}
+\setlength{\mytextfloatsep}{15pt plus 2pt minus 4pt}
 
 %% Abstand zwischen Inline-Gleitobjekten, die mit "here" platziert worden sind,
 %% und dem darüber und darunter angeordneten Fließtext fest
@@ -68,7 +68,7 @@
 %\setlength{\intextsep}{0.5\baselineskip} % Platz ober- und unterhalb des Bildes
 \newlength{\myintextsep}
 %\setlength{\myintextsep}{2\baselineskip} % (default 12pt plus 2pt minus 2pt) 
-\setlength{\myintextsep}{15pt} % KSP, real ca. 7 mm vor und nach Listings
+\setlength{\myintextsep}{15pt plus 2pt minus 2pt} % KSP, real ca. 7 mm vor und nach Listings
 %\setlength{\myintextsep}{10pt}
 %\setlength{\myintextsep}{12pt} %ohne Pluswerte (= Dehnung) und Minuswerte (= Stauchung)
 %\setlength{\myintextsep}{12pt plus 1pt minus 1pt} %mit Pluswerten (= Dehnung) und Minuswerten (= Stauchung)
@@ -111,6 +111,7 @@
 
 %%Abstand zwischen der Abbilung und der Überschrift:
 %%funktioniert aus irgendeinem Grund nicht!
+%%--> reason is "\DeclareFloatVCode{negintextskip}{{\vspace{-\myintextsep}\par}}" and its use in for figures and tables
 \newlength{\myaboveskip}
 %\setlength{\myaboveskip}{10pt}
 \setlength{\myaboveskip}{0pt}

@@ -869,9 +869,9 @@ verbose,
 
 
 \makeatletter
-% Positionierung von Gleitumgebungen defaultmäßig auf htbp statt tbp setzen.
-\renewcommand{\fps@figure}{H}
-\renewcommand{\fps@table}{H}
+% Positionierung von Gleitumgebungen defaultmäßig auf htb statt tbp setzen.
+\renewcommand{\fps@figure}{htb}%was H
+\renewcommand{\fps@table}{htb}%was H
 
 %% set vertical float alignment for the only-float pages:
 \ifthenelse{\boolean{SetFloatsVerticallyCentered}}%
@@ -1762,8 +1762,8 @@ afterskip=\myparagraphafterskip%
                     rowprecode=zeroskip,
                     midcode=captionskip,
                     captionskip=\mycaptionskip,
-                    postcode=negintextskip,
-                    rowpostcode=negintextskip,
+                    %postcode=negintextskip,%removed to take settings wrt floatskips into account
+                    %rowpostcode=negintextskip,%removed to take settings wrt floatskips into account
                     floatHaslist=true
                    }
 \floatsetup[table]{style=plain,
@@ -1772,8 +1772,8 @@ afterskip=\myparagraphafterskip%
                    rowprecode=zeroskip,
                    midcode=captionskip,
                    captionskip=\mycaptionskip,
-                   postcode=negintextskip,
-                   rowpostcode=negintextskip,
+                   %postcode=negintextskip,
+                   %rowpostcode=negintextskip,
                    floatHaslist=true
                   }
 \floatsetup[longtable]{style=plain,
