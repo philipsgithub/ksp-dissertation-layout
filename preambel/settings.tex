@@ -249,13 +249,13 @@
 \setlength{\mytop}{25mm}
 
 \newlength{\mybindingoffset}
-\setlength{\mybindingoffset}{0mm}
+\ifthenelse{\boolean{printVersion}}{\setlength{\mybindingoffset}{5mm}}{\setlength{\mybindingoffset}{0mm}}
 
 \newlength{\myinner}
-\setlength{\myinner}{25mm}%a4 with 160mm textwidth has 50mm for inner+outer length
+\ifthenelse{\boolean{printVersion}}{\setlength{\myinner}{22.5mm}}{\setlength{\myinner}{25mm}}%a4 with 160mm textwidth has 50mm for inner+outer length
 
 \newlength{\myouter}
-\setlength{\myouter}{25mm}%a4 with 160mm textwidth has 50mm for inner+outer length
+\ifthenelse{\boolean{printVersion}}{\setlength{\myouter}{22.5mm}}{\setlength{\myouter}{25mm}}%a4 with 160mm textwidth has 50mm for inner+outer length
 
 \newlength{\mytextwidth}
 \setlength{\mytextwidth}{160mm}%160mm for a4, 106mm for a5

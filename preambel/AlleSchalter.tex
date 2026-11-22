@@ -14,10 +14,12 @@
 \setUserDefinedBoolean{englishAsMainLanguage}{false}
 % Die Seiten mit dem Wort "Muster" bedrucken
 \setUserDefinedBoolean{printMuster}{false}
+% Druckversion: 5mm Bindekorrektur, 22.5mm Ränder, schwarze Links (Listing-Syntaxfarben bleiben erhalten)
+\setUserDefinedBoolean{printVersion}{false}
 % Sollen Links farbig dargestellt werden (oder schwarz für den Druck)?
-\setUserDefinedBoolean{coloredlinks}{true}
+\ifthenelse{\boolean{printVersion}}{\setUserDefinedBoolean{coloredlinks}{false}}{\setUserDefinedBoolean{coloredlinks}{true}}
 % Sollen Listings farbig dargestellt werden (oder schwarz für den Druck)?
-\setUserDefinedBoolean{coloredlistings}{true}
+\ifthenelse{\boolean{printVersion}}{\setUserDefinedBoolean{coloredlistings}{false}}{\setUserDefinedBoolean{coloredlistings}{true}}
 % Sollen alle Farben in den CMYK-Farbraum konvertiert werden (für den Druck)?
 \setUserDefinedBoolean{useCMYKcolors}{false}
 
