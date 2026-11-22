@@ -7,8 +7,9 @@
 %
 \mbox{}%
 %%%%%%%%%%%%  TITEL DER ARBEIT
- 	\begin{textblock}{11}[0.5,0.5](7.8,4.5)
-		\sffamily%
+	%\begin{textblock}{11}[0.5,0.5](7.8,4.5)%a5, looks like 8mm x-offset (equals the bindingoffset)
+	\begin{textblock}{15.608108108108107}[0.5,0.5](\fpeval{\effectivecenterx/\TPHorizModule},  \fpeval{6.36428571})%a4, scaled by a5-a4-ratio
+		\rmfamily%
 		%\huge%
 		\LARGE%
  		\centering%
@@ -17,8 +18,9 @@
 
 %%%%%%%%%%%% TYP DER ARBEIT
 %%%%%%%%%%%% AUTORNAME UND DATUM
- 	\begin{textblock}{11}[0.5,0.5](7.8,11.0)
- 		\sffamily%
+	%\begin{textblock}{11}[0.5,0.5](7.8,11.0)%a5
+	\begin{textblock}{15.608108108108107}[0.5,0.5](\fpeval{\effectivecenterx/\TPHorizModule}, \fpeval{15.55714286-0.1mm})%a4, scaled by a5-a4-ratio
+		\rmfamily%
 		\centering%
 		zur Erlangung des akademischen Grades eines\\%
 		\vspace{0.5\baselineskip}%
@@ -53,9 +55,10 @@
  	\end{textblock}
 
 %%%%%%%%%%%% BETREUER
-	\begin{textblock}{11}[0.5,0.5](7.8,17)
+	%\begin{textblock}{11}[0.5,0.5](7.8,17)%a5
+	\begin{textblock}{15.608108108108107}[0.5,0.5](\fpeval{\effectivecenterx/\TPHorizModule}, 24.04285714)%a4, scaled by a5-a4-ratio
 	%\begin{textblock}{9}(2.4,17)
-	\sffamily%
+	\rmfamily%
 	\raggedright%
 	\setlength{\tabcolsep}{0pt}
 		\begin{tabularx}{\columnwidth}{x@{\extracolsep{20pt}}l}
@@ -64,5 +67,5 @@
 			Zweiter Gutachter: & \CoAdvisor\texorpdfstring{\\}{}
 		\end{tabularx}
  	\end{textblock}
-	
+
 \end{titlepage}

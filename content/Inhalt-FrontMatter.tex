@@ -30,6 +30,26 @@
 %% Cover page:
 \input{content/00-FrontMatter/Titel-A5-DissBlank.tex}
 \clearpage
+
+%%%% LICENSE-TITLEPAGE
+\newpage
+\thispagestyle{empty} % Removes page numbers
+%\vspace*{\fill}       % Pushes content to the bottom of the page
+%
+%\noindent
+%%downloaded from: https://creativecommons.org/mission/downloads/
+%\includegraphics[height=3em]{figures-src/by-sa.eps}
+%
+%\vspace{1.0em}
+%\noindent
+%
+%This document is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0), except for third-party figures and material as marked, which remain under their original copyright and are reproduced under fair use or with permission.\\[0.5em]
+%\noindent
+%\href{https://creativecommons.org/licenses/by-sa/4.0/deed.en}%
+%{https://creativecommons.org/licenses/by-sa/4.0/deed.en}
+
+\clearpage
+
 \end{showCoverPage}%
 \frontmatter
 %
@@ -72,6 +92,17 @@
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%           Danksagung           %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{showAcknowledgments}%
+%
+\input{content/00-FrontMatter/Acknowledgments.tex}
+%
+\cleardoublepage
+\end{showAcknowledgments}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%       Abstract (English)       %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showAbstractEN}%
@@ -100,17 +131,6 @@
 %
 \cleardoublepage
 \end{showAbstractDE}%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%           Danksagung           %%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{showAcknowledgments}%
-%
-\input{content/00-FrontMatter/Acknowledgments.tex}
-%
-\cleardoublepage
-\end{showAcknowledgments}%
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
