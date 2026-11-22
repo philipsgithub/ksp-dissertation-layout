@@ -8,6 +8,7 @@
 *.blg
 *.db
 *.dvi
+*.fls
 *.glg
 *.glo
 *.gls
@@ -37,6 +38,7 @@
 *.wrt
 *.xdv
 *.xdy
+*.fdb_latexmk
 !images/*
 !images/*.pdf
 !images/*/*.pdf
