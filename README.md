@@ -1,7 +1,9 @@
-# KSP Dissertation Layout
+# KSP Dissertation Layout (Fork)
 
-An A4 XeLaTeX dissertation layout based on the [KIT Scientific Publishing (KSP) dissertation template](https://gitlab.cc-asp.fraunhofer.de/kit-ksp/dissertation-template) by Michael Grinberg.
-This is an independent adaptation, not an official template of KIT, KSP or Fraunhofer.
+This is a fork of the [KIT Scientific Publishing (KSP) dissertation template](https://gitlab.cc-asp.fraunhofer.de/kit-ksp/dissertation-template) by Michael Grinberg with an updated A4 XeLaTeX layout.
+It is an independent fork, not an official template of KIT, KSP or Fraunhofer.
+
+The `master` branch matches the original template, and `layout_updates` contains the layout changes.
 
 ## Layout
 
