@@ -2142,7 +2142,7 @@ afterskip=\myparagraphafterskip%
 % PW: für bbordermatrix mit eckigen Klammern
 % Alternativ: klassische plainTeX \bordermatrix mit eckigen Klammern (Redefinition von Befehlen):
 \usepackage{etoolbox}
-
+\preto\chapter{\glsresetall}%reset glossary (acronyms etc.) at the beginning of each chapter
 
 %% Zeilenumbrüche in urls nach folgenden Zeichen
 %\appto\UrlBreaks{\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\/\do\.}
@@ -2360,9 +2360,9 @@ afterskip=\myparagraphafterskip%
 
 
 \ifthenelse{\boolean{englishAsMainLanguage}}{%
-	\usepackage[english]{cleveref}
+	\usepackage[english,capitalize,nameinlink]{cleveref}
 }{%
-	\usepackage[ngerman]{cleveref}
+	\usepackage[ngerman,capitalize,nameinlink]{cleveref}
 }
 
 
