@@ -271,3 +271,83 @@
 			\printfield{labelnumber}}}}
 {\multicitedelim}
 {\usebibmacro{postnote}}
+
+% Automatically trimming/cropping PDFs
+\newcommand{\includeCroppedPdf}[2][]{%
+	%\IfFileExists{./#2-crop.pdf}{}{%hash sum check required to check for pdf-updates
+		\immediate\write18{pdfcrop --hires #2 #2-crop.pdf}%}%requires build-option: '--shell-escape'
+	\includegraphics[#1]{#2-crop.pdf}}
+
+\newtheoremstyle{research}
+{3pt}{3pt}{\itshape}{}{\bfseries}{\\}{.5em}{}
+
+\theoremstyle{research}
+\newtheorem{rqu}{Research Question}
+
+\newtcolorbox{cbox_withtitle}[2][]{
+	fonttitle=\bfseries,
+	title=#2,
+	colback = white,
+	colframe = black,
+	boxrule = 1pt,
+	leftrule = 1pt, % left rule weight
+	#1
+}
+\newtcolorbox{cbox_notitle}{
+	colback = white,
+	colframe = black,
+	boxrule = 1pt,
+	leftrule = 5pt, % left rule weight
+}
+
+\newtcolorbox{rqu_box}[1][]{%
+	blend before title=colon hang,
+	colback = white,
+	colframe = black,
+	boxrule = 1pt,
+	leftrule = 5pt,
+	%left=2pt,
+	%right=2pt,
+	%boxsep=2pt, %inner padding
+	%every float=\centering,
+	halign=flush left,
+	halign lower=flush right,
+	righthand width=0.15\textwidth,
+	lower separated=false,
+	#1}
+
+% Reference: https://tex.stackexchange.com/questions/340937/tcolorbox-and-figures-adding-description
+%\newtcolorbox[blend into=figures]{myfigure_orig}[2][]{%
+%	float=htb,
+%	blend before title=colon hang,
+%	sharp corners,
+%	colback=white,
+%	colbacktitle=blue!30!black,
+%	title={#2},
+%	every float=\centering,
+%	halign=flush center,
+%	halign lower=flush center,
+%	lower separated=false,
+%	#1}
+
+\newlength{\capheight}
+\settoheight{\capheight}{X}
+
+%\newcommand{\mythinarrowup}{\tikz[baseline=-.9ex] \draw[-stealth, thin] (0,-0.115) -- (0,.1);}
+%\newcommand{\mythinarrowdown}{\tikz[baseline=-.9ex] \draw[-stealth, thin] (0,0.1) -- (0,-.115);}
+
+\newcommand{\mythinarrowup}{%
+	\settoheight{\capheight}{X}%
+	\tikz[baseline=-0.ex]
+	\draw[-stealth, thin] (0,0) -- (0,\capheight);%
+}
+\newcommand{\mythinarrowdown}{%
+	\settoheight{\capheight}{X}%
+	\tikz[baseline=-0.ex]
+	\draw[-stealth, thin] (0,\capheight) -- (0,0);%
+}
+
+% For ranks in tables or elsewhere:
+\newcommand{\ranknum}[1]{\textit{\textbf{\small #1}}}
+\newcommand{\rankstar}[2]{\textbf{\small #1\textsuperscript{*}}\,\scriptsize{#2}}
+\newcommand{\rankdiff}[2]{\textit{\textbf{\small #1}}\,\scriptsize{#2}}

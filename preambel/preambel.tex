@@ -320,7 +320,7 @@
 \usepackage{multirow} % Mehrfachspalten
 %
 %%% Doc: Documentation inside dtx Package
-\usepackage{dcolumn}  % Ausrichtung an Komma oder Punkt
+%\usepackage{dcolumn}  % Ausrichtung an Komma oder Punkt
 
 \usepackage{tabulary}
 
@@ -1022,7 +1022,8 @@ verbose,
 % science packages
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-\usepackage{units}
+%\usepackage{units}
+\usepackage{siunitx}
 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1943,7 +1944,7 @@ afterskip=\myparagraphafterskip%
 
 %% PW: Todo-Liste. Braucht anscheinend eines der begrenzt verfügbaren TeX-\writes
 \ifthenelse{\boolean{showTODOs}}{%
-	\usepackage[textsize=footnotesize,ngerman,colorinlistoftodos]{todonotes}
+	\usepackage[textsize=footnotesize,ngerman,colorinlistoftodos,textcolor=Black,backgroundcolor=SeaGreen,linecolor=SeaGreen,bordercolor=Gray]{todonotes}
 }{%
 	\usepackage[disable]{todonotes}
 }

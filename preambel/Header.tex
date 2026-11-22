@@ -69,6 +69,16 @@
 	%cmyk, % CMYK Farbraum für den Druck (wird später mit \selectcolormodel gesetzt)
 	dvipsnames % for using the extended name set
 ]{xcolor}
+\usepackage{ifxetex}
+\ifxetex
+	\newcommand{\transparent}[1]{%
+		\pgfsetfillopacity{#1}%
+		\pgfsetstrokeopacity{#1}%
+	}
+	\usepackage{pgf}
+\else
+	\usepackage{transparent}%pdftex
+\fi% for transparency in pdf_tex
 
 % Encoding der Quellcode-Dateien (sonst funktionieren Umlaute in den Quellcodedateien nicht)
 \input{preambel/EncodingAndFont.tex}
