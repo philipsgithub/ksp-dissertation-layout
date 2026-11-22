@@ -8,12 +8,12 @@
 % Hier Breite von marginnotes setzen
 \newlength{\mymarginparwidth}
 %\setlength{\mymarginparwidth}{0.15\paperwidth}
-\setlength{\mymarginparwidth}{10mm}
+\setlength{\mymarginparwidth}{23.1mm}%was 10mm
 %\setlength{\mymarginparwidth}{0pt}
 % Abstand zwischen Seitennotizen und Text setzen
 \newlength{\mymarginparsep}
 %\setlength{\mymarginparsep}{}
-\setlength{\mymarginparsep}{3mm}
+\setlength{\mymarginparsep}{1mm}%was 3mm
 %\setlength{\mymarginparsep}{5mm}
 %\setlength{\mymarginparsep}{0pt}
 
@@ -245,16 +245,27 @@
 \setlength{\mytop}{25mm}
 
 \newlength{\mybindingoffset}
-\setlength{\mybindingoffset}{8mm}
+\setlength{\mybindingoffset}{0mm}
 
 \newlength{\myinner}
-\setlength{\myinner}{15mm}
+\setlength{\myinner}{25mm}%a4 with 160mm textwidth has 50mm for inner+outer length
 
 \newlength{\myouter}
-\setlength{\myouter}{15mm}
+\setlength{\myouter}{25mm}%a4 with 160mm textwidth has 50mm for inner+outer length
 
 \newlength{\mytextwidth}
-\setlength{\mytextwidth}{106mm}
+\setlength{\mytextwidth}{160mm}%160mm for a4, 106mm for a5
+
+\newlength{\mypagewidth}
+\newlength{\mypageheight}
+\setlength{\mypagewidth}{\paperwidth}
+\setlength{\mypageheight}{\paperheight}
+
+\newlength{\effectivecenterx}
+\setlength{\effectivecenterx}{0.5\mypagewidth + 0.5\mybindingoffset}
+
+\newlength{\effectivecentery}
+\setlength{\effectivecentery}{0.5\mypageheight}
 
 %vertical float alignment for the only-float pages:
 %on float-only pages the figures/tables shall be aligned at the top of the page instead of being centered
