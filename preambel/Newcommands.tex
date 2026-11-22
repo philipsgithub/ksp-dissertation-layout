@@ -242,3 +242,32 @@
 }
 \makeatother
 
+
+\defbibenvironment{thesislist}
+{\list
+	{\printtext[labelnumberwidth]{%
+			\printfield{labelprefix}%
+			\printfield{labelnumber}}}
+	{\setlength{\labelwidth}{\labelnumberwidth}%
+		\setlength{\leftmargin}{\labelwidth}%
+		\setlength{\labelsep}{\biblabelsep}%
+		\addtolength{\leftmargin}{\labelsep}%
+		\setlength{\itemsep}{\bibitemsep}%
+		\setlength{\parsep}{\bibparsep}}%
+	\renewcommand*{\makelabel}[1]{\hss##1}}
+{\endlist}
+{\item}
+
+\DefineBibliographyStrings{english}{
+	mathesis = {Master's Thesis},
+	bathesis = {Bachelor's Thesis},
+}
+
+\DeclareCiteCommand{\citePrefixed}
+{\usebibmacro{prenote}}
+{\printtext[bibhyperref]{%
+		\mkbibbrackets{%
+			\printfield{labelprefix}%
+			\printfield{labelnumber}}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}

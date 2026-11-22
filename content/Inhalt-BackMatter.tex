@@ -11,31 +11,17 @@
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%          Bibliographie         %%%%
-%%% (Achtung! Bibliographie darf im  %%%
-%%%  deutschen nicht in den Anhang!) %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{showBibliography}%
-%% mit BibLaTeX:
-\appto{\bibsetup}{\RaggedRight} %Flattersatz, Silbentrennung zulassen
-%\appto{\bibsetup}{\raggedright} %Flattersatz, keine Silbentrennung zulassen
-\printbibliography[heading=bibintoc]
-\end{showBibliography}%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%        Eigene Publikationen        %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showOwnPublications}%
 %
 %% Hier eigene Publikationen auflisten (aus der bib-Datei, die in Der Datei
 %% .preambel/AllePfade.tex in \bibpathOwnPublications definiert wird).
-\begin{refsection}[\bibpathOwnPublications]
-\newrefcontext[sorting=ynt]
+\begin{refsegment}
 %
 %% Beim Erwähnen der Einträge in einer einleitenden Notiz:
 %% keine Backreferenzen in der Liste erzeugen:
-\backtrackerfalse
+%\backtrackerfalse
 %
 %% Aufruf der Quellen ohne Verweis im Text geschieht mit \nocite{...}:
 %%
@@ -58,21 +44,25 @@ Die Publikationen
 %% \citefield{...}[labelnumberwidth]{labelnumber} mit den beiden 
 %% Optionen "labelnumberwidth" und "labelnumber" verwenden, damit
 %% die Nummern und nicht die alphanumerischen Bezeichnungen zitiert werden:
-\citefield{GrinbergOhrBeyerer-ITSC2009,TeutschGrinberg-RobustDetectionInWAMI-2016}[labelnumberwidth]{labelnumber}
+\citePrefixed{GrinbergOhrBeyerer-ITSC2009,TeutschGrinberg-RobustDetectionInWAMI-2016}
 adressieren das Thema XXX, während die Publikationen YYY sich mit dem Thema ZZZ beschäftigen. 
 Die letzteren können nur im weiteren Sinne als relevant für die vorliegende Arbeit angesehen werden.
 }
 %
 \appto{\bibsetup}{\RaggedRight} %Flattersatz, Silbentrennung zulassen
 %\appto{\bibsetup}{\raggedright} %Flattersatz, keine Silbentrennung zulassen
+\begin{refcontext}[sorting=ydnt, labelprefix=P]
 \printbibliography[env=bibliographyNUM,%
+				   segment=\therefsegment,
 				   keyword=ownpubl,%
 				   heading=bibintoc,%
 				   %heading=subbibliography,%
 				   %nottype=patent,%
 				   prenote={OwnPublPrenote}, % Falls besondere Notiz (s.o.) erwünscht
+				   resetnumbers=false,
 				   title={\TransOwnPublications}]
-\end{refsection}
+\end{refcontext}
+\end{refsegment}
 \end{showOwnPublications}%
 %
 %
@@ -83,12 +73,11 @@ Die letzteren können nur im weiteren Sinne als relevant für die vorliegende Ar
 %
 %% Hier eigene Patente auflisten (aus der bib-Datei, die in Der Datei
 %% .preambel/AllePfade.tex in \bibpathOwnPatents definiert wird).
-\begin{refsection}[\bibpathOwnPatents]
-\newrefcontext[sorting=ynt]
+\begin{refsegment}
 %
 %% Beim Erwähnen der Einträge in einer einleitenden Notiz:
 %% keine Backreferenzen in der Liste erzeugen:
-\backtrackerfalse
+%\backtrackerfalse
 %
 %% Aufruf der Quellen ohne Verweis im Text geschieht mit \nocite{...}:
 %%
@@ -105,25 +94,25 @@ Die letzteren können nur im weiteren Sinne als relevant für die vorliegende Ar
 \defbibnote{OwnPatentPrenote}{%
 Dieser Abschnitt enthält Patente, welche während meiner Promotionszeit entstanden sind.
 Die Patente
-%% Bei Referenzierung von Publikationen in diesem Abschnitt bitte 
-%% statt dem üblichen \cite{...}-Makro das Makro
-%% \citefield{...}[labelnumberwidth]{labelnumber} mit den beiden 
-%% Optionen "labelnumberwidth" und "labelnumber" verwenden, damit
-%% die Nummern und nicht die alphanumerischen Bezeichnungen zitiert werden:
-\citefield{PatentValeoUltraschall2016DE,PatentValeoUltraschall2016WO}[labelnumberwidth]{labelnumber}
+%% Präfix und Nummer gemeinsam ausgeben, z.B. [Pat1]:
+\citePrefixed{PatentValeoUltraschall2016DE,PatentValeoUltraschall2016WO}
 entstanden in Zusammenarbeit mit...
 }
 %
 \appto{\bibsetup}{\RaggedRight} %Flattersatz, Silbentrennung zulassen
 %\appto{\bibsetup}{\raggedright} %Flattersatz, keine Silbentrennung zulassen
+\begin{refcontext}[sorting=ydnt, labelprefix=Pat]
 \printbibliography[env=bibliographyNUM,%
+									 segment=\therefsegment,
 									 keyword=ownpatent,%
 									 %heading=subbibliography,%
 									 heading=bibintoc,%
 									 type=patent,%
 									 prenote=OwnPatentPrenote, % Falls besondere Notiz (s.o.) erwünscht
+									 resetnumbers=true,
 									 title={\TransOwnPatents}]
-\end{refsection}
+\end{refcontext}
+\end{refsegment}
 \end{showOwnPatents}%
 %
 %
@@ -132,8 +121,7 @@ entstanden in Zusammenarbeit mit...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{showSupervisedTheses}%
 %%
-\begin{refsection}[\bibpathStudentTheses]
-\newrefcontext[sorting=ynt]
+\begin{refsegment}
 %
 %% Aufruf der Quellen ohne Verweis im Text:
 %
@@ -156,15 +144,45 @@ Dieser Abschnitt enthält die während der Promotionszeit betreuten studentische
 %%
 \appto{\bibsetup}{\RaggedRight} %Flattersatz, Silbentrennung zulassen
 %\appto{\bibsetup}{\raggedright} %Flattersatz, keine Silbentrennung zulassen
-\printbibliography[env=bibliographyNUM,%
+\begin{refcontext}[sorting=ydnt, labelprefix=T]
+\printbibliography[env=thesislist,%bibliographyNUM,%
+									 segment=\therefsegment,
 									 keyword=supervised,%
 									 %heading=subbibliography,%
 									 %type=thesis,%
 									 heading=bibintoc,%
-									 %prenote=SupervThesisPrenote, % Falls besondere Notiz (s.o.) erwünscht							
+									 prenote=SupervThesisPrenote, % Falls besondere Notiz (s.o.) erwünscht
+									 resetnumbers=true,
 									 title={\TransSupervisedTheses}]
-\end{refsection}
+\end{refcontext}
+\end{refsegment}
 \end{showSupervisedTheses}%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%          Bibliographie         %%%%
+%%% (Achtung! Bibliographie darf im  %%%
+%%%  deutschen nicht in den Anhang!) %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newrefcontext[sorting=none]
+\begin{showBibliography}%
+\begin{refsegment}
+%\backtrackertrue
+%% mit BibLaTeX:
+\appto{\bibsetup}{\RaggedRight} %Flattersatz, Silbentrennung zulassen
+%\appto{\bibsetup}{\raggedright} %Flattersatz, keine Silbentrennung zulassen
+\begin{refcontext}[sorting=none]
+\printbibliography[env=bibliographyNUM,
+					heading=bibintoc,
+					category=cited,
+					notkeyword=supervised,
+					notkeyword=ownpubl,
+					notkeyword=ownpatent,
+					resetnumbers=true
+					]
+\end{refcontext}
+\end{refsegment}
+\end{showBibliography}%
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

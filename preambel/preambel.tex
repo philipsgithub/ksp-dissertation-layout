@@ -2159,8 +2159,8 @@ afterskip=\myparagraphafterskip%
 %%DIN1505
 %%\usepackage[backref=true,backend=bibtex8,style=alphabetic,maxnames=10]{biblatex}
 \usepackage[backend=biber,%
-						bibstyle=alphabetic,%
-						citestyle=alphabetic,%
+						bibstyle=ieee,%
+						citestyle=numeric,%
 						labelnumber,% zusätzlich labelnummer zur Verfügung stel
 						defernumbers=true,%
 						%maxnames=10,% Maximal 10 Autorennamen zulassen, wenn >10, dann lasse nur einen + et al. (ggf. änderbar mit  der Option "minnames"
@@ -2177,8 +2177,22 @@ afterskip=\myparagraphafterskip%
 						%block=par,% Beginne einen neuen Paragraphen für jeden Eintrag
 						%block=nbpar,% Ähnlich der par-Option, aber verbietet Seitensprünge zwischen den Übergängen und innerhalb der Einträge.
 						%block=ragged,% Fügt einen kleinen Strafraum ein, um Zeilenumbrüche an Blockgrenzen zu fördern und die Bibliografie rechts orientiert (Flattersatz) zu setzen
+						%url=true,%IEEE
+						sorting=none,%IEEE, IEEE with isbn and without DOI?
 						backref=true%Entscheidet,ob die Endreferenzen (Seitenzahlen) in die Bibliografie geschrieben werden sollen. (default=false)
 						]{biblatex}
+
+%% Editoren und Erscheinungsort (location) aus allen Bibliographie-Einträgen entfernen:
+\AtEveryBibitem{%
+	\clearfield{editor}%
+	\clearname{editor}%
+	\clearfield{location}%
+	\clearlist{location}%
+}
+
+% Track cited entries without overriding \cite, so optional arguments keep working.
+\DeclareBibliographyCategory{cited}
+\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
 
 %% Das "+"-Zeichen nach mehr als maxcitenames Authoren entfernen durch Umdefinieren von "labelalphaothers":
 \renewcommand*{\labelalphaothers}{}
@@ -2250,7 +2264,7 @@ afterskip=\myparagraphafterskip%
 
 %% Formatierung für die durchnummerierte Zitate in der Liste eigener Publikationen:
 %% Nummer in eckigen Klammern
-\DeclareFieldFormat{labelnumber}{\mkbibbrackets{#1}}
+%\DeclareFieldFormat{labelnumber}{\mkbibbrackets{#1}}%leads to [(2)] in combination with ieee style
 
 %% Definition für die Listen eigener Publikationen und Patente
 \defbibenvironment{bibliographyNUM}
