@@ -58,7 +58,7 @@
 %
 \makeatletter
 \ifxetex %Nutzung von XeLaTeX anstatt nur LaTeX:
-	\usepackage{unicode-math}
+	\usepackage{unicode-math}%required for setmathfont commands
 	%--------------------------------------------------
 	%  Libertine Fonts
 	%--------------------------------------------------
@@ -205,18 +205,18 @@
 								Extension = .otf
 								]{libertinusserif}
 		\setsansfont[
-								%Scale = 0.85,
-								UprightFont = *-regular,
-								ItalicFont = *-italic,
-								BoldFont = *-bold,
-								BoldItalicFont = *-italic,
+								Scale = 0.92,%scaling factor from SDQ template
+								UprightFont = *-Regular,
+								ItalicFont = *-Italic,
+								BoldFont = *-Bold,
+								BoldItalicFont = *-BoldItalic,
 								BoldItalicFeatures = {RawFeature={embolden=3}},
-								BoldSlantedFont= *-bold,
-								BoldSlantedFeatures = {FakeSlant=0.2, SmallCapsFont = *-bold },
+								BoldSlantedFont= *-Bold,
+								BoldSlantedFeatures = {FakeSlant=0.2, SmallCapsFont = *-Bold },
 								SmallCapsFeatures={Letters=SmallCaps},
 								Path=./fonts/,
-								Extension = .otf
-								]{libertinussans}
+								Extension = .ttf
+								]{SourceSansPro}%libertinussans}
 		\setmonofont[
 								Scale = 0.8,
 								FakeStretch = 0.8,
@@ -232,11 +232,23 @@
 								Path=./fonts/,
 								Extension = .otf
 								]{libertinusmono}
+		\newfontfamily\jetbrainsmono[
+		Scale=0.8,
+		%FakeStretch=0.8,%not needed for JetBrainsMono
+		UprightFont=*-Regular,
+		ItalicFont=*-Italic,
+		BoldFont=*-Bold,
+		BoldItalicFont=*-BoldItalic,
+		Path=./fonts/jetbrains_mono/ttf/,
+		Extension=.ttf
+		]{JetBrainsMono}
 		\setmathfont[
-								%Scale = 0.85,
-								Path=./fonts/,
-								Extension = .otf
-								]{STIX2Math}
+										%Scale = 0.85,
+										Path=./fonts/,
+										Extension = .otf
+										]{STIX2Math}%{libertinusmath-regular}%STIX2Math
+		\setmathfont{texgyretermes-math.otf}[range=\mathbb]%TeX Gyre Termes Math
+		%\setmathfont{TeX Gyre Pagella Math}[range=\mathbb]
 	\fi
 	\ifdefined\UseLibertinusFrutigerSTIXMix
 		\setmainfont[
