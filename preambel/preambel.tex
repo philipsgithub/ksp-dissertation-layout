@@ -1419,7 +1419,7 @@ verbose,
 %% Forderung des KSP-Verlages: keine Worttrennung in Überschriften, daher \raggedright statt \RaggedRight
 %\newcommand\SectionFontStyle{\bfseries \sffamily \RaggedRight}
 %\newcommand\SectionFontStyle{\bfseries \rmfamily \RaggedRight}
-\newcommand\SectionFontStyle{\raggedright \bfseries \rmfamily}
+\newcommand\SectionFontStyle{\raggedright \bfseries \sffamily}%for serif/sansserif chapter headings
 
 % Alle Überschriften fett, serifenlos und in Flattersatz ohne Silbentrennung
 \setkomafont{sectioning}{\SectionFontStyle}
@@ -1833,7 +1833,8 @@ afterskip=\myparagraphafterskip%
 %\setcounter{secnumdepth}{2}    % Abbildungsnummerierung mit groesserer Tiefe
 %\setcounter{tocdepth}{3}		 % Inhaltsverzeichnis mit groesserer Tiefe
 %Fonts in Kapiteln und sections...
-\renewcommand\cftchapfont{\normalsize\bfseries\raggedright}
+\renewcommand\cftchapfont{\normalsize\bfseries\sffamily\raggedright}%for serif/sansserif chapter entries (using tocloft)
+\renewcommand\cftchappagefont{\normalsize\bfseries\rmfamily}%for serif/sansserif page numbers (using tocloft)
 \renewcommand\cftsecfont{\normalsize\raggedright}
 \renewcommand\cftsubsecfont{\normalsize\raggedright}
 %
@@ -2081,6 +2082,7 @@ afterskip=\myparagraphafterskip%
    verbose,
    hyperindex=true,         % backlinkex index
    linktocpage=true,        % Inhaltsverzeichnis verlinkt Seiten
+   linktoc=all,
    hyperfootnotes=false,     % Keine Links auf Fussnoten
    % Bookmarks
    bookmarks=true,          % Erzeugung von Bookmarks fuer PDF-Viewer

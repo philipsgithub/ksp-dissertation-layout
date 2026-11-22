@@ -167,3 +167,78 @@
 %% 2 Zellen, erste Zelle ist in Mathe-Format
 \newcommand{\myNotationTableEntryMath}[2]{{$#1$}&{#2}\\}
 
+
+\makeatletter
+% Record only entries actually rendered in a contents/list file. The label
+% also lets headings outside the TOC remain plain text on subsequent runs.
+\let\oldcontentsline\contentsline
+\renewcommand{\contentsline}[4]{%
+	\oldcontentsline{#1}{%
+		% Multiple TODO entries can share one destination.
+		\ifcsundef{my@tocseen:#4}{%
+			\csgdef{my@tocseen:#4}{}%
+			\Hy@raisedlink{\hypertarget{toc.#4}{}}%
+			\begingroup
+				\edef\@currentHref{toc.#4}%
+				\label{toc-entry:#4}%
+			\endgroup
+		}{}%
+		#2}{#3}{#4}%
+}
+
+\newcommand{\my@tocbacklink}[2]{%
+	\ifthenelse{\boolean{showTableOfContents}}{%
+		\@ifundefined{r@toc-entry:#1}{#2}{\hyperlink{toc.#1}{#2}}%
+	}{#2}%
+}
+
+% Glossaries, the index and the TODO list add their TOC entry before their
+% starred heading; front-matter chapters add it afterwards. Remember the
+% former's destination rather than using the new anchor made by chapter*.
+\let\my@lastchapterhref\@empty
+\let\my@pendingchapterhref\@empty
+\let\my@oldaddcontentsline\addcontentsline
+\renewcommand{\addcontentsline}[3]{%
+	\my@oldaddcontentsline{#1}{#2}{#3}%
+	\ifstrequal{#1}{toc}{%
+		\begingroup
+			\edef\my@toclevel{#2}%
+			\ifdefstring{\my@toclevel}{chapter}{%
+				\ifx\@currentHref\my@lastchapterhref\else
+					\global\let\my@pendingchapterhref\@currentHref
+				\fi
+			}{}%
+		\endgroup
+	}{}%
+}
+
+\newcommand{\my@chaptertitle}[1]{%
+	\let\my@backhref\@currentHref
+	\ifx\my@pendingchapterhref\@empty\else
+		\let\my@backhref\my@pendingchapterhref
+	\fi
+	\global\let\my@pendingchapterhref\@empty
+	\global\let\my@lastchapterhref\@currentHref
+	\my@tocbacklink{\my@backhref}{#1}%
+}
+
+% KOMA's formatting hooks run after Hyperref assigns the heading anchor.
+% Keep the sectioning commands intact, including their optional arguments.
+\let\my@oldchapterlinesformat\chapterlinesformat
+\renewcommand{\chapterlinesformat}[3]{%
+	\my@oldchapterlinesformat{#1}{#2}{\my@chaptertitle{#3}}%
+}
+\let\my@oldchapterlineswithprefixformat\chapterlineswithprefixformat
+\renewcommand{\chapterlineswithprefixformat}[3]{%
+	\my@oldchapterlineswithprefixformat{#1}{#2}{\my@chaptertitle{#3}}%
+}
+\let\my@oldsectionlinesformat\sectionlinesformat
+\renewcommand{\sectionlinesformat}[4]{%
+	\my@oldsectionlinesformat{#1}{#2}{#3}{\my@tocbacklink{\@currentHref}{#4}}%
+}
+\let\my@oldsectioncatchphraseformat\sectioncatchphraseformat
+\renewcommand{\sectioncatchphraseformat}[4]{%
+	\my@oldsectioncatchphraseformat{#1}{#2}{#3}{\my@tocbacklink{\@currentHref}{#4}}%
+}
+\makeatother
+
