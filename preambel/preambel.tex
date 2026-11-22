@@ -553,8 +553,12 @@ verbose,
 				numberstyle=\tiny,          % Stil der Zeilennummern
 }
 
+%% listings only prints literal -, *, <, > etc. in the \ttdefault family.
+%% Mark JetBrains Mono as that family inside listings.
+\newcommand{\listingfont}{\jetbrainsmono\small\expandafter\let\expandafter\ttdefault\csname f@family\endcsname}
+
 \lstdefinestyle{nonumbersframed}{% Listing mit Rahmen ohne Nummerirerung
-			basicstyle=\ttfamily,%
+			basicstyle=\listingfont,%
 			numbers=none,%
 			frame = single,             % Rahmen um Listings zeichnen
 			framesep=\mylistingframesep,
@@ -575,13 +579,16 @@ verbose,
 
 
 \lstdefinestyle{numbersframed}{% Listing mit Rahmen mit Nummerirerung
-			basicstyle=\ttfamily,%
-			numbers=left,			          % Ort der Zeilennummern (falls gewünscht, 
+			basicstyle=\listingfont,%
+			numbers=left,			          % Ort der Zeilennummern (falls gewünscht,
+			numbersep=\mylistingnumbersep, % dedicated numbersep variable left from code
+			numberstyle=\tiny\color{gray},
 			frame = single,             % Rahmen um Listings zeichnen
 			framesep=\mylistingframesep,
 			framerule=\mylistingframerule,
-			xleftmargin=\dimexpr(\mylistingframesep+\mylistingframerule+2\marginparsep)\relax,
-			framexleftmargin=2\marginparsep,
+			%rulecolor=\color{black!30},% change color if needed
+			xleftmargin=\dimexpr(\mylistingnumbersep+\mylistingframesep+\mylistingframerule+2\marginparsep)\relax,
+			framexleftmargin=\dimexpr(\mylistingnumbersep+2\marginparsep)\relax,
 			xrightmargin=\dimexpr(\mylistingframesep+\mylistingframerule)\relax,
 			%% Abstände ausgeglichen!
 			%aboveskip=\parskip, % default is \medskipamount
@@ -593,7 +600,15 @@ verbose,
 			belowskip=\dimexpr(\mylistingbelowskip-\mylistingframesep-\mylistingframerule)\relax, % default is \medskipamount
 			%aboveskip=\mylistingaboveskip, % default is \medskipamount
 			%belowskip=\mylistingbelowskip, % default is \medskipamount
-			numberstyle=\tiny,          % Stil der Zeilennummern	
+			lineskip=-2pt, % denser lines
+			breaklines=true,
+			breakatwhitespace=true,
+			postbreak=\mbox{$\hookrightarrow$\space},
+			% readability:
+			columns=flexible,
+			keepspaces=true,
+			showstringspaces=false,
+			tabsize=2,
 }
 
 \lstdefinestyle{nonumbersgraybackgrd}{%
@@ -748,16 +763,19 @@ verbose,
 				tabsize=2,                  % Groesse von Tabs
 				extendedchars=true,         %
 				breaklines=true,            % Zeilen werden Umgebrochen
-				keywordstyle=\color{keywordcolor},
+				%keywordstyle=\color{keywordcolor},
+				keywordstyle=\color{codeblue}\bfseries,
 %				keywordstyle=[1]\textbf,    % Stil der Keywords
 %				keywordstyle=[2]\textbf,    %
 %				keywordstyle=[3]\textbf,    %
 %				keywordstyle=[4]\textbf,    %
-				stringstyle=\color{stringcolor}, % Farbe der String
+				%stringstyle=\color{stringcolor}, % Farbe der String
+				stringstyle=\color{codepurple},
 				showspaces=false,           % Leerzeichen anzeigen ?
 				showtabs=false,             % Tabs anzeigen ?
 				showstringspaces=false,      % Leerzeichen in Strings anzeigen ?
-				commentstyle=\color{commentcolor},
+				%commentstyle=\color{commentcolor},
+				commentstyle=\color{codegreen}\itshape,
 				directivestyle=\color{keywordcolor},
 				%aboveskip=0pt, % Abstand vor dem Listing (oben gesetzt, abhängig vom Vorhandensein des Rahmens)
 				%belowskip=0pt, % Abstand vor dem Listing (oben gesetzt, abhängig vom Vorhandensein des Rahmens)
@@ -774,6 +792,7 @@ verbose,
 				%abovecaptionskip=\myintextsep, % Abstand nach der Listing-Caption (überschreibt vorausgehende Definition, wird von nachfolgenden Definitionen überschrieben!
 				%belowcaptionskip=\mylistingcaptionskip,
 				%belowcaptionskip=0pt,
+				backgroundcolor=\color{backcolour},
 }
 
 
